@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Meter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <div id="wrapper" class="chart-wrapper">
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="statusWindow">
+                <span class="dot" id="statusDot"></span>
+                <span><label class="statusLabel">Status: </label><label id="status">Not connected to Smart Meter</label></span>
+            </div>
+            <div class="individual-values">
+                <label id="value-1"></label>
+                <label id="value-2"></label>
+            </div>
+            <div class="grid-container">
+                <table>
+                    <thead>
+                      <tr>
+                        <th>Params</th>
+                        <th>R-Y</th>
+                        <th>Y-B</th>
+                        <th>B-R</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="grid1-v">
+                        <td class="rowHead">V L-L</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="grid1-i">
+                        <td class="rowHead">I L-L</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr  id="grid1-f">
+                        <td class="rowHead">Frequency</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr  id="grid1-pf">
+                        <td class="rowHead">PF</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Params</th>
+                        <th>R</th>
+                        <th>Y</th>
+                        <th>B</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="grid2-v">
+                        <td class="rowHead">Voltage</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="grid2-i">
+                        <td class="rowHead">Current</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="grid2-p">
+                        <td class="rowHead">Power</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="grid2-e">
+                        <td class="rowHead">Energy</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr  id="grid2-f">
+                        <td class="rowHead">Frequency</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr  id="grid2-pf">
+                        <td class="rowHead">PF</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+         
+            <!-- Add this inside your right-container div in index.html -->
+            <div class="graph-selector">
+                <label for="graphSelect">Select Graph:</label>
+                <select id="graphSelect">
+                    <!-- Options for 30 graphs will be added here -->
+                </select>
+            </div>
+            <button id="downloadButton">Download Data(CSV)</button>
+        </div>        
+    </div>
+    <script src="chart.umd.js"></script>   
+    <script src="renderer.js"></script>
+</body>
+ 
+</html>
