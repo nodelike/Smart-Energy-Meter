@@ -32,6 +32,7 @@ function connectToESP8266() {
         
         const values = sdata.split(',').map(Number);
         updateGridData(sdata);
+        checkStatus(sdata);
         values.forEach((value, index) => {
             if (index < charts.length) {
                 const chart = charts[index];
@@ -146,26 +147,38 @@ function updateGridData(data) {
     document.getElementById('value-2').textContent = `Total Power: ${dataValues[1]} kW`;
 }
 
+function checkStatus(data) {
+    const dataValues = data.split(',').map(value => parseFloat(value).toFixed(0));
 
+    let magInt = dataValues[32];
+    let devCas = dataValues[33];
+    let ovVolt = dataValues[34];
+    let unVolt = dataValues[35];
+    let ovCurrent = dataValues[36];
+    
+    let status = [magInt, devCas, ovVolt, unVolt, ovCurrent]
+    let statuses = ['magnetic', 'casing', 'ovVolt', 'unVolt', 'ovCurrent']
+    
+    console.log(dataValues)
+    console.log(status);
+    for(let i = 1; i <=5; i++){
+        if(status[i-1] == 1){
+            document.getElementById(`${statuses[i-1]}Dot`).style.backgroundColor = 'red';
+            document.getElementById(`${statuses[i-1]}Dot`).style.animation = 'redBlink 0.3s infinite'
+            document.getElementById(`${statuses[i-1]}Status`).textContent = 'Status: DETECTED!'
+        } else {
+            document.getElementById(`${statuses[i-1]}Dot`).style.backgroundColor = 'green';
+            document.getElementById(`${statuses[i-1]}Dot`).style.animation = 'none'
+            document.getElementById(`${statuses[i-1]}Status`).textContent = 'Status: NORMAL'
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     connectToESP8266();
     const chartContainer = document.getElementById('wrapper');
+    let tlabels = ['Total Power', 'Total Energy', 'V R-Y', 'I R-Y', 'F R-Y', 'PF R-Y', 'V Y-B', 'I Y-B', 'F Y-B', 'PF Y-B', 'V B-R', 'I B-R', 'F B-R', 'PF B-R', 'V R', 'I R', 'P R', 'E R', 'F R', 'PF R', 'V Y', 'I Y', 'P Y', 'E Y', 'F Y', 'PF Y', 'V B', 'I B', 'P B', 'E B', 'F B', 'PF B'];
     for (let i = 1; i <= 32; i++) {   
-        let tlabel;
-        // if(i==1){
-        //     tlabel = 'State of Charge (SOC)'
-        // }else if(i==2){
-        //     tlabel = 'Depth of Discharge (DOD)'
-        // }else if(i==3){
-        //     tlabel = 'Battery Voltage (V)'
-        // } else if(i==4){
-        //     tlabel = 'Battery Current (A)'
-        // } else if(i==5){
-        //     tlabel = 'Battery Power (Watt)'
-        // } else {
-        tlabel = 'Data' + String(i);
-        // }
         const canvas = document.createElement('canvas');
         canvas.id = `chart-${i}`;
         canvas.style.display = i === 1 ? 'block' : 'none'; // Show only the first chart initially
@@ -177,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: [],
                 datasets: [{
-                    label: tlabel,
+                    label: tlabels[i-1],
                     data: [],
                     borderColor: '#007bff',
                     borderWidth: 2
@@ -191,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     title: {
                         display: true,
-                        text: tlabel,
+                        text: tlabels[i-1],
                         color: 'black',
                     }
                 },
@@ -220,12 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
     }
 
-
     const graphSelect = document.getElementById('graphSelect');
     for (let i = 1; i <= 32; i++) {
         const option = document.createElement('option');
         option.value = i;
-        option.textContent = `Graph ${i}`;
+        option.textContent = `${tlabels[i-1]} Graph`;
         graphSelect.appendChild(option);
     }
     graphSelect.addEventListener('change', () => {

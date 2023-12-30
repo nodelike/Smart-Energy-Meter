@@ -58,6 +58,29 @@ button {
     max-width: 360px;
 }
 
+.statusContainer {
+    margin: 10px 0 0 0;
+    display: flex;
+    width: 90%;
+}
+
+.statusContainer span {
+    font-size: 14px;
+}
+
+.statusDots{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.statusTexts {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: right;
+}
+
 .statusWindow {
     width: 100%;
     display: flex;
@@ -81,6 +104,17 @@ button {
     margin: 0 15px;
 }
 
+.statDot {
+    height: 8px;
+    width: 8px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-right: 15px;
+    animation: greenBlink 2s infinite;
+}
+
 .statusLabel{
     font-size: 16px;
     font-weight: bold;
@@ -91,13 +125,13 @@ button {
 }
 
 table {
-    width: 360px;
-    border-collapse: separate;
+    width: 295px;
+    border-collapse: collapse;
     border-spacing: 0;
 }
 
 table tr {
-    height: 25px;
+    height: 22px;
 }
 
 table tr th,
@@ -152,11 +186,18 @@ td{
     font-weight: bold;
 }
 
+.gridDiv {
+    width: 360px;
+}
+
 .grid-container {
     display: flex;
-    flex-direction: column;
+    position: relative;
+    width: 300px;
+    overflow: scroll;
     gap: 10px;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .graph-selector {
@@ -242,3 +283,10 @@ canvas {
     border: 1px solid #d1d1d1; /* Border for each chart */
     border-radius: 5px; /* Rounded corners for charts */
 }
+
+@keyframes redBlink {
+    0% { background-color: white; }
+    50% { background-color: red; }
+    100% { background-color: white; }
+}
+
