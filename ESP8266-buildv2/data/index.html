@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Meter</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="main-wrapper" id="mainWrapper">
+        <div class="right-container">
+            <div class="statusWindow">
+                <span class="dot" id="statusDot"></span>
+                <span><label class="statusLabel">Status: </label><label id="status">Not connected to Smart Meter</label></span>            </div>
+            <div class="individual-values">
+                <label id="value-1"></label>
+                <label id="value-2"></label>
+            </div>
+            <div class="grid-container">
+              <div class="gridDiv">
+                <table id="grid1">
+                  <thead>
+                    <tr>
+                      <th>Params</th>
+                      <th>R-Y</th>
+                      <th>Y-B</th>
+                      <th>B-R</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="grid1-v">
+                      <td class="rowHead">V L-L</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr id="grid1-i">
+                      <td class="rowHead">I L-L</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr  id="grid1-f">
+                      <td class="rowHead">Frequency</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr  id="grid1-pf">
+                      <td class="rowHead">PF</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="gridDiv">
+                <table id="grid2">
+                  <thead>
+                    <tr>
+                      <th>Params</th>
+                      <th>R</th>
+                      <th>Y</th>
+                      <th>B</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="grid2-v">
+                      <td class="rowHead">Voltage</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr id="grid2-i">
+                      <td class="rowHead">Current</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr id="grid2-p">
+                      <td class="rowHead">Power</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr id="grid2-e">
+                      <td class="rowHead">Energy</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr  id="grid2-f">
+                      <td class="rowHead">Frequency</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr  id="grid2-pf">
+                      <td class="rowHead">PF</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+              </div>    
+            </div>
+            <div class="statusContainer">
+              <div class="statusDots">
+                <span><span class="statDot" id="magneticDot"></span> Magnetic Interfernce</span>
+                <span><span class="statDot" id="casingDot"></span> Device Casing</span>
+                <span><span class="statDot" id="ovVoltDot"></span> Over Voltage</span>
+                <span><span class="statDot" id="unVoltDot"></span> under Voltage</span>
+                <span><span class="statDot" id="ovCurrentDot"></span> Over Current</span>
+              </div>
+              <div class="statusTexts">
+                <span id="magneticStatus">Status: NORMAL</span>
+                <span id="casingStatus">Status: NORMAL</span>
+                <span id="ovVoltStatus">Status: NORMAL</span>
+                <span id="unVoltStatus">Status: NORMAL</span>
+                <span id="ovCurrentStatus">Status: NORMAL</span>
+              </div>
+            </div>
+            <div class="container">
+              <div id="wrapper" class="chart-wrapper">
+              </div>
+            </div>
+            <!-- Add this inside your right-container div in index.html -->
+            <div class="graph-selector">
+                <label for="graphSelect">Select Graph:</label>
+                <select id="graphSelect">
+                    <!-- Options for 30 graphs will be added here -->
+                </select>
+            </div>
+            <button id="downloadButton">Download Data(CSV)</button>
+            <button id="wifiConfig">Config WiFi</button>
+        </div>        
+    </div>
+    <div class="wifi-wrapper" style="display: none;" id="wifiWrapper">
+      <div class="list-container" id="wifiList">
+      </div>
+      <input type="text" id="wifiSsid" placeholder="SSID">
+      <input type="password" id="wifiPwd" placeholder="Password">
+      <button id="connectBtn">Connect</button>
+      <button id="refreshWifi">Refresh</button>
+      <button id="exitWifiConfig">Exit WiFi Config</button>
+    </div>
+    <script src="chart.umd.js"></script>   
+    <script src="script.js"></script>
+</body>
+ 
+</html>

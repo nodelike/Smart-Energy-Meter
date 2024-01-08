@@ -1,0 +1,331 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 380px; /* or any max width you prefer */
+    margin: 0 auto;
+}
+
+.wifi-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 380px; /* or any max width you prefer */
+    margin: 0 auto;
+}
+
+.wifi-wrapper input{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.list-container{
+    width: 100%;
+    height: 200px;
+    border: 2px solid black;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    margin: 20px 0;
+}
+
+.list-container a {
+    margin: 5px 10px;
+    text-decoration: underline;
+}
+
+.list-container a:hover {
+    cursor: pointer;
+}
+
+#refreshWifi{
+    margin: 10px 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 20px; 
+    width: 100%; 
+    max-width: 550px; 
+    margin: 15px 0;
+    padding: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff; 
+    border-radius: 10px; 
+    border: 1px solid black;
+    transition: 0.5s ease-in-out;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.right-container .button-on {
+    background-color: #28a745; /* Green for 'on' state */
+}
+
+.right-container .button-off {
+    background-color: #dc3545; /* Red for 'off' state */
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 0 0;
+    width: 100%;
+    max-width: 360px;
+}
+
+.statusContainer {
+    margin: 10px 0 0 0;
+    display: flex;
+    width: 90%;
+}
+
+.statusContainer span {
+    font-size: 14px;
+}
+
+.statusDots{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.statusTexts {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: right;
+}
+
+.statusWindow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff; 
+    border-radius: 10px; 
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+    margin: 0 15px;
+}
+
+.statDot {
+    height: 8px;
+    width: 8px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-right: 15px;
+    animation: greenBlink 2s infinite;
+}
+
+.statusLabel{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#status{
+    font-size: 16px;
+}
+
+table {
+    width: 295px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr {
+    height: 22px;
+}
+
+table tr th,
+table tr td {
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    box-shadow: 2px 2px 1px #e5dfcc;
+}
+table tr th:first-child,
+table tr td:first-child {
+    border-left: 1px solid #bbb;
+}
+table tr th {
+    border-top: 1px solid #bbb;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 6px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+    border-top-right-radius: 6px;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+}
+
+th{
+    width: 80px;
+    background: #E5E6EB;
+    color: #111;
+}
+td{
+    text-align: center;
+    font-size: 14px;
+    background: #EFF1F6;
+}
+
+.individual-values {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.gridDiv {
+    width: 360px;
+}
+
+.grid-container {
+    display: flex;
+    position: relative;
+    width: 300px;
+    overflow: scroll;
+    gap: 10px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.graph-selector {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff; 
+    border-radius: 10px; 
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.graph-selector label {
+    font-size: 14px;
+    margin-right: 24px;
+    font-weight: bold;
+}
+
+#graphSelect {
+    width: 100px;
+}
+
+#downloadButton{
+    margin: 10px 0;
+}
+#button0 {
+    margin-left: 30px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.channel{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 15px 5px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+.channelLabel {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.channel button{
+    width: 80px;
+    margin: 5px 0;
+} 
+
+.button-active {
+    background-color: #28a745; /* Active button color */
+    color: black;
+}
+
+.button-inactive {
+    background-color: #007bff; /* Inactive button color */
+    color: black;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+}
+
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important; /* Full width of the grid column */
+    height: 100% !important; /* Full height, maintaining aspect ratio */
+    object-fit: contain; /* Keep aspect ratio */
+    border: 1px solid #d1d1d1; /* Border for each chart */
+    border-radius: 5px; /* Rounded corners for charts */
+}
+
+@keyframes redBlink {
+    0% { background-color: white; }
+    50% { background-color: red; }
+    100% { background-color: white; }
+}
+
