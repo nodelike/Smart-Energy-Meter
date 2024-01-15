@@ -2,9 +2,9 @@
 #include <ESP8266WebServer.h>
 #include <WebSocketsServer.h>
 #include <LittleFS.h>
-// #include <EEPROM.h>
+#include <EEPROM.h>
 
-// int eepromAddress = 0;
+int eepromAddress = 0;
 const char* AP_SSID = "ESP8266";     
 const char* AP_PWD = "123456789"; 
 ESP8266WebServer serverSTA(80);
@@ -25,8 +25,8 @@ void setup() {
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAP(AP_SSID, AP_PWD);
 
-  // EEPROM.begin(512);
-  // readCredentials();
+  EEPROM.begin(512);
+  readCredentials();
 
   if (STA_SSID != "" && STA_PWD != "") {
     WiFi.begin(STA_SSID, STA_PWD);
@@ -134,16 +134,16 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
   }
 }
 
-// void readCredentials() {
-//   EEPROM.get(eepromAddress, STA_SSID);
-//   eepromAddress += sizeof(STA_SSID);
-//   EEPROM.get(eepromAddress, STA_PWD);
-//   eepromAddress += sizeof(STA_PWD);
-// }
+void readCredentials() {
+  EEPROM.get(eepromAddress, STA_SSID);
+  eepromAddress += sizeof(STA_SSID);
+  EEPROM.get(eepromAddress, STA_PWD);
+  eepromAddress += sizeof(STA_PWD);
+}
 
-// void writeCredentials() {
-//   EEPROM.put(eepromAddress, STA_SSID);
-//   eepromAddress += sizeof(STA_SSID);
-//   EEPROM.put(eepromAddress, STA_PWD);
-//   EEPROM.commit();
-// }
+void writeCredentials() {
+  EEPROM.put(eepromAddress, STA_SSID);
+  eepromAddress += sizeof(STA_SSID);
+  EEPROM.put(eepromAddress, STA_PWD);
+  EEPROM.commit();
+}
