@@ -17,13 +17,11 @@
     "electron-builder": "^24.9.1",
     "electron-packager": "^17.1.2",
     "electron-rebuild": "^3.2.9",
-    "plotly.js": "^2.0.0",
-    "serialport": "^9.2.8"
+    "plotly.js": "^2.0.0"
   },
   "dependencies": {
     "chart.js": "^4.4.0",
     "network": "^0.6.1",
-    "serialport": "^9.2.8",
     "ws": "^8.15.0"
   },
   "build": {
@@ -33,9 +31,6 @@
       "target": "msi",
       "icon": "logo.ico"
     },
-    "asarUnpack": [
-      "node_modules/serialport/**"
-    ],
     "npmRebuild": true,
     "files": [
       "**/*",
