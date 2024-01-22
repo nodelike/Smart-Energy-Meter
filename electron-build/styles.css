@@ -29,6 +29,7 @@ html, body {
     border-radius: 10px; 
     border: 1px solid black;
     transition: 0.5s ease-in-out;
+    margin-bottom: 44px;
 }
 
 button {
@@ -236,4 +237,44 @@ canvas {
     object-fit: contain; /* Keep aspect ratio */
     border: 1px solid #d1d1d1; /* Border for each chart */
     border-radius: 5px; /* Rounded corners for charts */
+}
+
+.statusContainer {
+    margin: 10px 0 0 0;
+    display: flex;
+    width: 90%;
+}
+
+.statusContainer span {
+    font-size: 14px;
+}
+
+.statusDots{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.statDot {
+    height: 8px;
+    width: 8px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+    margin-right: 15px;
+    animation: greenBlink 2s infinite;
+}
+
+.statusTexts {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: right;
+}
+.left-container{
+    margin: 5px 0 0 0;
+    width: 100%;
+    max-width: 550px;
+    justify-content: center;
 }

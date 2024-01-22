@@ -159,8 +159,8 @@ function updateGridData(data) {
 document.addEventListener('DOMContentLoaded', () => {
     connectToESP8266();
     const chartContainer = document.getElementById('wrapper');
+    let tlabels = ['Total Power', 'Total Energy', 'V R-Y', 'I R-Y', 'F R-Y', 'PF R-Y', 'V Y-B', 'I Y-B', 'F Y-B', 'PF Y-B', 'V B-R', 'I B-R', 'F B-R', 'PF B-R', 'V R', 'I R', 'P R', 'E R', 'F R', 'PF R', 'V Y', 'I Y', 'P Y', 'E Y', 'F Y', 'PF Y', 'V B', 'I B', 'P B', 'E B', 'F B', 'PF B'];
     for (let i = 1; i <= 32; i++) {   
-        let tlabel;
         // if(i==1){
         //     tlabel = 'State of Charge (SOC)'
         // }else if(i==2){
@@ -172,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // } else if(i==5){
         //     tlabel = 'Battery Power (Watt)'
         // } else {
-        tlabel = 'Data' + String(i);
         // }
         const canvas = document.createElement('canvas');
         canvas.id = `chart-${i}`;
@@ -185,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: [],
                 datasets: [{
-                    label: tlabel,
+                    label: tlabels,
                     data: [],
                     borderColor: '#007bff',
                     borderWidth: 2
@@ -199,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     title: {
                         display: true,
-                        text: tlabel,
+                        text: tlabels[i-1],
                         color: 'black',
                     }
                 },
@@ -233,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 32; i++) {
         const option = document.createElement('option');
         option.value = i;
-        option.textContent = `Graph ${i}`;
+        option.textContent = `${tlabels[i-1]} Graph`;
         graphSelect.appendChild(option);
     }
     graphSelect.addEventListener('change', () => {
